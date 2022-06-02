@@ -1,0 +1,101 @@
+Leé con cuidado el enunciado y por lo menos dos veces antes de encarar la resolución. Pensá bien la estrategia, que tenés, 
+qué te piden y qué te falta antes de comenzar el desarrollo del programa.
+El objetivo de este examen es evaluar la correcta aplicación de los conceptos y técnicas vistos hasta el momento:
+•	Correcta implementación de constructores.
+•	Modularización reutilizable y mantenible con uso de métodos con correcta parametrización y correcto encapsulamiento, 
+publicando setters y getters sólo cuando corresponda.
+•	Manejo de clases, enumerados y colecciones.
+•	Importación y Exportación de proyectos Java desde Eclipse.
+Antes de comenzar creá un proyecto JAVA cuyo nombre cumpla con el siguiente formato:
+THP-2P-SEDE-CURSO-APELLIDO-Nombre
+Ejemplos:
+THP-2P-BE-11A-GONZALEZ-Benito
+THP-2P-YA-11A-HARA-Jaime
+Este proyecto deberá ser exportado al entregar con este nombre. Tené en cuenta que esto también forma parte del examen y se califica.
+
+NOTA IMPORTANTE:
+•	No te quedes con dudas, preguntá lo que haga falta.                                                            
+•	Hacé todo lo que puedas, para aprobar el examen no es necesario hacer completo el ejercicio, ni hacerlo perfecto.
+•	Cuando termines el examen exportá el proyecto desde Eclipse y subilo como entrega del parcial con el nombre “CURSO-APELLIDO-NOMBRE.zip”. 
+El archivo debe ser obligatoriamente generado con Eclipse y debés asegurarte de que el archivo haya sido correctamente 
+entregado antes de cerrar el Aula Virtual (debés haber presionado los botones "Terminar Intento..." y luego "Enviar Todo y Terminar").
+Al entregar el examen asegurate de finalizar la entrega y confirmá la recepción con tu profesor.
+•	No se aceptarán exámenes por fuera de la página de entrega oficial de la plataforma.
+
+
+Enunciado
+Una empresa de trenes de carga quiere desarrollar un sistema para administrar el traslado de granos de trigo. Solo se transporta un único producto (trigo) y 
+todo lo transportado es homogéneo.
+Los trenes se identifican por un número correlativo, a partir de 1 en adelante. Esta numeración es automática 
+(no la ingresa el usuario sino que la indica el sistema cuando se crea un nuevo tren).
+Cada formación (cada tren) tiene hasta 30 vagones. Existen tres tipos de vagones, 
+denominados SMALL, MEDIUM y LARGE que son capaces de cargar 30, 40 y 50 toneladas de trigo respectivamente. 
+
+
+Desarrollar en la/s clase/s que corresponda:
+•	Un método llamado crearFormacion, que crea un tren sin vagones. A cada tren se le asigna un número correlativo. 
+Este método no recibe ningún parámetro y debe retornar el número de tren asignado a esa formación.
+•	Un método llamado agregarVagones que reciba un número de tren, una cantidad de vagones y un tipo de vagón para (de ser posible)
+crear vagones del tipo requerido agregándolos al final de la formación. Devuelve un enumerado con los siguientes valores posibles:.
+o	NO_EXISTE_TREN: si el  número no corresponde a un tren existente.
+o	CANT_VAGONES_INVALIDA: si la cantidad de vagones es menor o igual que cero, o bien si la cantidad total de vagones 
+(los existentes en el tren más los que se quieren agregar) excede el largo máximo posible.
+o	AGREGADO_OK: si la operación se pudo realizar correctamente.
+•	Un método llamado cargarTren, que reciba un número de tren y una cantidad de toneladas de trigo a cargar. 
+Para realizar la carga de los granos el tren debe existir y tener capacidad suficiente para acomodar la totalidad de la carga. 
+Este método debe retornar verdadero si se pudo realizar la operación y falso en caso contrario.
+•	Un método llamado listarCapacidadDisponible que muestre todos los trenes con el porcentaje de espacio libre de cada formación 
+(la carga acumulada de todos los vagones contra la capacidad total de cada tren).
+•	Un método llamado sacarVagonesVacíos que reciba un número de tren y extraiga del mismo los vagones que están totalmente vacíos. 
+Este método debe retornar cuántos vagones fueron eliminados. Si el tren no existe debe devolver -1.
+Realizá los métodos (tanto privados como públicos) que consideres necesarios para mantener el correcto encapsulamiento y 
+responsabilidades de cada una de las clases del sistema.
+Se deben probar los métodos públicos desde una clase Test, sin pedir ingresos por teclado con el siguiente lote de prueba. 
+Tené en cuenta que en esta clase NO SE CREAN TRENES NI VAGONES:
+•	Procesá la creación de dos formaciones de trenes (tren1 y tren2) guardándote el número de tren de cada uno.
+•	Procesá el agregado de 5 vagones MEDIUM y 7 LARGE al primero de los trenes.
+•	Procesá el agregado de 20 vagones SMALL y otros 20 MEDIUM al segundo de los trenes.
+•	Procesá el agregado de 20 vagones LARGE al tren 999 (que no existe).
+•	Procesá la carga de 165 toneladas de grano en el primer tren.
+•	Procesá la carga de otras 200 toneladas de grano en el primer tren.
+•	Procesá la carga de 240 toneladas de grano en el segundo tren.
+•	Procesá la carga de otras 1000 toneladas de grano en el segundo tren.
+•	Procesá la carga de 10 toneladas de grano en el tren número 999.
+•	Listá la capacidad disponible (porcentaje) en todos los trenes.
+•	Procesá la extracción de los vagones vacíos del primer tren.
+•	Procesá otra vez la extracción de los vagones vacíos del primer tren.
+•	Procesá la extracción de los vagones vacíos del tren número 999.
+
+Nota: Para desarrollar estos puntos con mayor facilidad y rapidez te recomendamos modularizar la clase Test. 
+Una posible salida por pantalla, habiendo realizado el ejercicio completo y procesando los datos pedidos anteriormente es la siguiente:
+
+crearFormacion() -> 1
+crearFormacion() -> 2
+
+
+agregarVagones(1, 5, MEDIUM) -> AGREGADO_OK
+agregarVagones(1, 7, LARGE) -> AGREGADO_OK
+agregarVagones(2, 20, SMALL) -> AGREGADO_OK
+agregarVagones(2, 20, MEDIUM) -> CANT_VAGONES_INVALIDA
+agregarVagones(999, 20, LARGE) -> NO_EXISTE_TREN
+
+
+cargarTren(1, 165.0) -> true
+cargarTren(1, 200.0) -> true
+cargarTren(2, 240.0) -> true
+cargarTren(2, 1000.0) -> false
+cargarTren(999, 10.0) -> false
+
+
+Capacidad Disponible en Cada Tren:
+Tren: 1  Espacio Libre: 33.64%
+Tren: 2  Espacio Libre: 60.00%
+
+
+sacarVagonesVacios(1) -> 3
+sacarVagonesVacios(1) -> 0
+sacarVagonesVacios(999) -> -1
+
+Repetimos: Cuando termines y/o antes de que expire el tiempo del examen (guardate al menos cinco minutos para esto) exportá el proyecto tal como se pide al principio. 
+Luego subí el archivo al Aula Virtual. Asegurate de haber adjuntado lo correcto y de haber entregado y cerrado el examen (para esto, luego de adjuntar el zip con el 
+proyecto presionar los botones “Terminar Intento…” y luego  “Enviar todo y Terminar”).
